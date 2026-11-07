@@ -1,0 +1,20 @@
+--- a/crux/src/index.js	2026-11-07 11:38:40.290714605 -0800
++++ b/crux/src/index.js	2026-11-07 11:38:40.330237852 -0800
+@@ -7,6 +7,7 @@
+ 
+ 
+ golden._crux_uuid_cnt = 1;
++golden._interpGen = 0;
+ golden.getCruxUUID = function() {
+   return '' + golden._crux_uuid_cnt++;
+ }
+@@ -3063,6 +3064,9 @@
+     if (seed == null && golden.CRUX_SEED != null) {
+       seed = golden.CRUX_SEED;
+     }
++    // SSP spike: reset the lazily-cached RNG once per interp pass so a cached
++    // AST can be re-interpreted with a new seed (reseed without re-parse).
++    if (this._rngGen !== golden._interpGen) { this._rng = null; this._rngGen = golden._interpGen; }
+     if (seed != null && this._rng == null) {
+       this._rng = createSeededRng(seed);
+     }
