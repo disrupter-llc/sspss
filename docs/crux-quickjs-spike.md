@@ -20,7 +20,18 @@ Date 2026-11-07. Code in `spikes/crux-quickjs/`.
 
 All nine Crux examples give byte-identical output in Node, QuickJS on x86, and QuickJS on armv7 under qemu.
 
-Nothing has run on the SSP yet. A rough guess is that its CPU is 3 to 5 times slower for this work. That puts edits near 50 to 350 ms and reseeds under 1 ms. Checklist 001 replaces the guess with numbers.
+## Results on the SSP
+
+Checklist 001, run 2026-11-09. Details in `hardware/results/001-crux-quickjs-timing/`.
+
+| Operation | SSP software stopped | SSP software running |
+|---|---|---|
+| Startup | 97 ms | 99 ms |
+| Edit | 110 to 465 ms | 111 to 473 ms |
+| Reseed | 0.27 to 1.04 ms | 0.26 to 1.25 ms |
+| JS heap | 1.2 MB | 1.2 MB |
+
+Output is identical to Node on the SSP. The SSP is about 7 times slower than the x86 reference. Reseed is fast enough for every beat. Edits work when applied at the next bar, but are too slow to re-parse on every encoder click.
 
 ## Findings
 
@@ -29,7 +40,7 @@ Nothing has run on the SSP yet. A rough guess is that its CPU is 3 to 5 times sl
 3. Crux caches each Mot's random generator. So a cached program gave wrong results when reseeded. A four-line patch resets the generator once per interpret pass. Cached reseeds now match fresh compiles.
 4. Compiles run off the audio thread. The old program keeps playing. The new event list is swapped in at a bar line.
 
-## If edits are too slow on the SSP
+## Making encoder edits faster
 
 - Ohm can re-parse only the changed part of the text (`Matcher.replaceInputRange`).
 - An encoder edit that changes one number could patch the cached program directly.

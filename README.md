@@ -19,7 +19,7 @@ modules/           real SSP modules (none yet)
 ## Status
 
 - Crux runs inside QuickJS. Output matches Node exactly. See `docs/crux-quickjs-spike.md`.
-- First hardware task: `hardware/checklists/001-crux-quickjs-timing.md`.
+- Checklist 001 passed on the SSP. Edit 110 to 473 ms, reseed under 1.3 ms. See `hardware/results/001-crux-quickjs-timing/`.
 - First planned module: Billiards, ported from Lup's `src/shared/billiards_sim.js`.
 
 ## Working here

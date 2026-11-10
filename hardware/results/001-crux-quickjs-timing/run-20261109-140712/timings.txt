@@ -1,0 +1,11 @@
+startup (runtime + bytecode load + grammar): 98.6 ms
+balinese-gamelan.crux              edit= 473.17 ms  reseed= 0.981 ms
+canon-with-transformations.crux    edit= 209.70 ms  reseed= 0.552 ms
+displace-anticipation.crux         edit= 111.24 ms  reseed= 0.276 ms
+displace-fractional.crux           edit= 150.22 ms  reseed= 0.262 ms
+displace.crux                      edit= 141.33 ms  reseed= 0.279 ms
+fugal-exposition.crux              edit= 342.97 ms  reseed= 1.246 ms
+mot-timescale.crux                 edit= 194.57 ms  reseed= 0.832 ms
+polyrhythm.crux                    edit= 212.59 ms  reseed= 0.656 ms
+voice-offset.crux                  edit= 224.83 ms  reseed= 0.530 ms
+worst edit=473.17 ms  worst reseed=1.246 ms  js heap=1.2 MB

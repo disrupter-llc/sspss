@@ -33,7 +33,7 @@ Andy Snavley already has an SSP workflow. This repo uses his deploy method and h
 
 ## Open questions for the SSP
 
-- Is there shell access on the SSP?
+- Shell access on the SSP. Yes, answered by checklist 001.
 - How do plugin floats map to volts? This matters for V/oct outputs.
 - How many outputs can one module declare?
 - May a plugin start its own thread?
