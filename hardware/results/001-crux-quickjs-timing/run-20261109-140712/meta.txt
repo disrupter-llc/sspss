@@ -1,0 +1,4 @@
+date: 2026-11-09T22:07:12Z
+host: 192.168.1.6
+binary: ./spikes/crux-quickjs/build/crux_host_armv7
+note: synthor running
