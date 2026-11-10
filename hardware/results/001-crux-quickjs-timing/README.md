@@ -1,6 +1,6 @@
 # 001 Crux on QuickJS timing: results
 
-Run by Andy Snavley on 2026-11-09 over a shell on the SSP. Built from `spikes/crux-quickjs/build.sh`.
+Run by Andy Snavley on 2026-11-09 with `hardware/run-001-from-mac.sh` (SSH to the SSP). Built from `spikes/crux-quickjs/build.sh`.
 SSP kernel `5.13.13-00056-g5031957dda5b` (2022-07-11), armv7l.
 
 Two runs. `run-20261109-140712` had the SSP software (synthor) running. `run-20261109-140932` had it stopped.
