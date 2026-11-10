@@ -33,8 +33,8 @@ Andy Snavley already has an SSP workflow. This repo uses his deploy method and h
 
 ## Open questions for the SSP
 
-- Is there shell access on the SSP?
+- Shell access: yes. `ssh root@192.168.1.6` over USB-ethernet (dropbear). Password on stock images is `123456`; key auth preferred.
 - How do plugin floats map to volts? This matters for V/oct outputs.
 - How many outputs can one module declare?
 - May a plugin start its own thread?
-- What is the fastest way to get a new `.so` onto the SSP?
+- Fastest `.so` deploy so far: `scp -O` to `/media/BOOT/plugins/` then restart synthor (SSP Manager or `serendipity-ssp/scripts/deploy.sh`).

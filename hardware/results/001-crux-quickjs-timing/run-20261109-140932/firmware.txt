@@ -1,0 +1,5 @@
+Linux rockchip 5.13.13-00056-g5031957dda5b #177 SMP PREEMPT Mon Jul 11 20:46:55 PDT 2022 armv7l GNU/Linux
+---
+Welcome to Rockchip
+---
+/dev/mmcblk1p6           91.0G     30.6G     60.4G  34% /media/BOOT

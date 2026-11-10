@@ -1,13 +1,14 @@
 # Crux on QuickJS, spike results
 
 Date 2026-11-07. Code in `spikes/crux-quickjs/`.
+SSP timings measured 2026-11-09. See `hardware/results/001-crux-quickjs-timing/`.
 
 ## Setup
 
-- Crux source from `disrupterbox/crux/src`, bundled with ohm-js 17.5 by esbuild (213 KB).
+- Crux source from `animist-os/crux` (`src/`), bundled with ohm-js 17.5 by esbuild (213 KB).
 - QuickJS release 2026-06-04. The bundle is precompiled to QuickJS bytecode with `qjsc`.
 - A small C host uses the bare engine API, as a plugin would.
-- Built for x86 and for armv7 hard-float (`-mcpu=cortex-a17 -mfpu=neon-vfpv4`, static).
+- Built for x86/arm64 native and for armv7 hard-float static (`cortex-a17`).
 
 ## Results on x86 (Xeon 2.1 GHz)
 
@@ -20,7 +21,18 @@ Date 2026-11-07. Code in `spikes/crux-quickjs/`.
 
 All nine Crux examples give byte-identical output in Node, QuickJS on x86, and QuickJS on armv7 under qemu.
 
-Nothing has run on the SSP yet. A rough guess is that its CPU is 3 to 5 times slower for this work. That puts edits near 50 to 350 ms and reseeds under 1 ms. Checklist 001 replaces the guess with numbers.
+## Results on SSP (Rockchip armv7l, fw 2022-07-11)
+
+Checklist 001. Pass: `cmp` clean, every reseed under 2 ms, every edit under 500 ms.
+
+| Operation | With patch loaded | Patch cleared |
+|---|---|---|
+| Startup | 98.6 ms | 96.8 ms |
+| Edit | 111 to 473 ms | 110 to 465 ms |
+| Reseed | 0.26 to 1.25 ms | 0.27 to 1.04 ms |
+| JS heap | 1.2 MB | 1.2 MB |
+
+Worst edit was `balinese-gamelan.crux` (~470 ms). Worst reseed was `fugal-exposition.crux` (~1.2 ms). Live edit is viable; heavy edits are near the lag line. Reseed is comfortably live.
 
 ## Findings
 
